@@ -47,9 +47,11 @@ export const userSignup = async (
     res.cookie(COOKIE_NAME, token, {
       path: "/",
       domain: "localhost",
-      expires,
+      expires, 
       httpOnly: true,
       signed: true,
+      sameSite: 'none',
+      secure: true 
     });
 
     return res
@@ -93,9 +95,11 @@ export const userLogin = async (
     res.cookie(COOKIE_NAME, token, {
       path: "/",
       domain: "localhost",
-      expires,
+      expires, 
       httpOnly: true,
       signed: true,
+      sameSite: 'none',
+      secure: true 
     });
 
     return res

@@ -51,7 +51,7 @@ const ChatItem = ({
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "18px" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -61,7 +61,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "18px" }}>{block}</Typography>
             )
           )}
       </Box>
@@ -70,7 +70,7 @@ const ChatItem = ({
     <Box
       sx={{
         display: "flex",
-        p: 2,
+        p: 1.5,
         bgcolor: "#004d56",
         gap: 2,
         borderRadius: 2,
@@ -82,7 +82,7 @@ const ChatItem = ({
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "18px", pt:"5px" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -92,7 +92,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "18px" }}>{block}</Typography>
             )
           )}
       </Box>
