@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -50,7 +51,7 @@ const ChatItem = ({
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "18px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -60,7 +61,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "18px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
             )
           )}
       </Box>
@@ -69,7 +70,7 @@ const ChatItem = ({
     <Box
       sx={{
         display: "flex",
-        p: 1.5,
+        p: 2,
         bgcolor: "#004d56",
         gap: 2,
         borderRadius: 2,
@@ -81,7 +82,7 @@ const ChatItem = ({
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "18px", pt:"5px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -91,7 +92,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "18px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
             )
           )}
       </Box>

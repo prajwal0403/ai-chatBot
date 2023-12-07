@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
 import red from "@mui/material/colors/red";
 import { useAuth } from "../context/AuthContext";
@@ -162,6 +162,7 @@ const Chat = () => {
           }}
         >
           {chatMessages.map((chat, index) => (
+            //@ts-ignore
             <ChatItem content={chat.content} role={chat.role} key={index} />
           ))}
         </Box>
@@ -178,11 +179,6 @@ const Chat = () => {
           <input
             ref={inputRef}
             type="text"
-            onKeyDown={e => {
-              if(e.key === 'Enter') {
-                handleSubmit();  
-              }
-            }}  
             style={{
               width: "100%",
               backgroundColor: "transparent",
