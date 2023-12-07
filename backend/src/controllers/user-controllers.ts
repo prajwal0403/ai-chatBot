@@ -24,7 +24,7 @@ export const userSignup = async (
   res: Response,
   next: NextFunction
 ) => {
-  const localDomain = req.get('host');
+  const localDomain = req.get('origin');
   try {
     //user signup
     const { name, email, password } = req.body;
