@@ -12,14 +12,15 @@ app.use(cors({
     origin: 'https://ai-chat-bot-frontend-rautprajwal546-gmailcom.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-  }));
-  
+}));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
-
-//remove it in production
-app.use(morgan("dev"));
-
 app.use("/api/v1", appRouter);
+
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Internal Server Error");
+});
 
 export default app;
