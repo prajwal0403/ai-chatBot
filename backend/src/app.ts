@@ -8,7 +8,12 @@ config();
 const app = express();
 
 //middlewares
-app.use(cors({ origin: "http://127.0.0.1:5173", credentials: true }));
+app.use(cors({
+    origin: 'https://ai-chat-bot-frontend-rautprajwal546-gmailcom.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
+  
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
