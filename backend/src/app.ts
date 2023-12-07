@@ -12,6 +12,7 @@ app.use(cors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
+    preflightContinue: true,
 }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
