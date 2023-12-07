@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import bcrypt from 'bcryptjs';
+import { hash, compare } from "bcrypt";
 import { createToken } from "../utils/token-manager.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 export const getAllUsers = async (req, res, next) => {
@@ -20,13 +20,13 @@ export const userSignup = async (req, res, next) => {
         const existingUser = await User.findOne({ email });
         if (existingUser)
             return res.status(401).send("User already registered");
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await hash(password, 10);
         const user = new User({ name, email, password: hashedPassword });
         await user.save();
         // create token and store cookie
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain: "localhost",
+            domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
             signed: true,
             path: "/",
         });
@@ -35,7 +35,7 @@ export const userSignup = async (req, res, next) => {
         expires.setDate(expires.getDate() + 7);
         res.cookie(COOKIE_NAME, token, {
             path: "/",
-            domain: "localhost",
+            domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app", // Set your frontend domain here
             expires,
             httpOnly: true,
             signed: true,
@@ -59,14 +59,14 @@ export const userLogin = async (req, res, next) => {
         if (!user) {
             return res.status(401).send("User not registered");
         }
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        const isPasswordCorrect = await compare(password, user.password);
         if (!isPasswordCorrect) {
             return res.status(403).send("Incorrect Password");
         }
         // create token and store cookie
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain: "localhost",
+            domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
             signed: true,
             path: "/",
         });
@@ -75,7 +75,7 @@ export const userLogin = async (req, res, next) => {
         expires.setDate(expires.getDate() + 7);
         res.cookie(COOKIE_NAME, token, {
             path: "/",
-            domain: "localhost",
+            domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app", // Set your frontend domain here
             expires,
             httpOnly: true,
             signed: true,
@@ -122,7 +122,7 @@ export const userLogout = async (req, res, next) => {
         }
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
-            domain: "localhost",
+            domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
             signed: true,
             path: "/",
         });
