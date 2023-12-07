@@ -4,8 +4,6 @@ import bcrypt from "bcryptjs";
 import { createToken } from "../utils/token-manager.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
-const localDomain = process.env.NODE_ENV === 'development' ? 'localhost' : '65718e59cc7b95610aabb5f1--deluxe-sable-2e199d.netlify.app';
-
 export const getAllUsers = async (
   req: Request,
   res: Response,
@@ -26,6 +24,7 @@ export const userSignup = async (
   res: Response,
   next: NextFunction
 ) => {
+  const localDomain = req.get('host');
   try {
     //user signup
     const { name, email, password } = req.body;
@@ -70,6 +69,7 @@ export const userLogin = async (
   res: Response,
   next: NextFunction
 ) => {
+  const localDomain = req.get('host');
   try {
     //user login
     const { email, password } = req.body;
@@ -141,6 +141,7 @@ export const userLogout = async (
   res: Response,
   next: NextFunction
 ) => {
+  const localDomain = req.get('host');
   try {
     //user token check
     const user = await User.findById(res.locals.jwtData.id);
