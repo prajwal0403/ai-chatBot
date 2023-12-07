@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs";
 import { createToken } from "../utils/token-manager.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
+const localDomain = process.env.NODE_ENV === 'development' ? 'localhost' : '65718e59cc7b95610aabb5f1--deluxe-sable-2e199d.netlify.app';
+
 export const getAllUsers = async (
   req: Request,
   res: Response,
@@ -36,7 +38,7 @@ export const userSignup = async (
     // create token and store cookie
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
+      domain: localDomain,
       signed: true,
       path: "/",
     });
@@ -46,7 +48,7 @@ export const userSignup = async (
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app", // Set your frontend domain here
+      domain: localDomain, // Set your frontend domain here
       expires,
       httpOnly: true,
       signed: true,
@@ -84,7 +86,7 @@ export const userLogin = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
+      domain: localDomain,
       signed: true,
       path: "/",
     });
@@ -94,7 +96,7 @@ export const userLogin = async (
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app", // Set your frontend domain here
+      domain: localDomain, // Set your frontend domain here
       expires,
       httpOnly: true,
       signed: true,
@@ -151,7 +153,7 @@ export const userLogout = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
+      domain: localDomain,
       signed: true,
       path: "/",
     });

@@ -9,10 +9,10 @@ const app = express();
 
 //middlewares
 app.use(cors({
-    origin: "https://ai-chat-bot-frontend-git-main-rautprajwal546-gmailcom.vercel.app",
+    origin: 'https://65718e59cc7b95610aabb5f1--deluxe-sable-2e199d.netlify.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
- }));
+}));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use("/api/v1", appRouter);
