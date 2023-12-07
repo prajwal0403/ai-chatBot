@@ -9,7 +9,7 @@ const app = express();
 
 //middlewares
 app.use(cors({
-    origin: 'https://ai-chat-bot-frontend-rautprajwal546-gmailcom.vercel.app',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
